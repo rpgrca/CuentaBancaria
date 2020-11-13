@@ -10,5 +10,10 @@ namespace oop
         {
             Saldo += unaCantidadDeDinero;
         }
+
+        public void Extraer(decimal unaCantidadDeDinero)
+        {
+            Saldo -= unaCantidadDeDinero;
+        }
     }
 }
