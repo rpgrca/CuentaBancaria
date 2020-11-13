@@ -2,7 +2,7 @@ namespace oop
 {
     public abstract class Cuenta
     {
-        public abstract decimal Saldo { get; protected set; }
+        public decimal Saldo { get; protected set; } = 0;
         public abstract void Depositar(decimal unaCantidadDeDinero);
         public abstract void Extraer(decimal unaCantidadDeDinero);
     }
