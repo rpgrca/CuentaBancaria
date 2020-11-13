@@ -27,13 +27,23 @@ namespace oop
         }
 
         [Fact]
-        public void Test1()
+        public void AgregarSumaDeDinero()
         {
             var sut = Saldo.DeMasDe(0);
             var sumaDeDinero = SumaDeDinero.De(150);
             var nuevoSaldo = sut.Agregar(sumaDeDinero);
 
             Assert.True(nuevoSaldo.Es(150));
+        }
+
+        [Fact]
+        public void SustraerSumaDeDinero()
+        {
+            var sut = Saldo.DeMasDe(-1000);
+            var sumaDeDinero = SumaDeDinero.De(600);
+            var nuevoSaldo = sut.Sustraer(sumaDeDinero);
+
+            Assert.True(nuevoSaldo.Es(-600));
         }
     }
 }

@@ -25,5 +25,8 @@ namespace oop
             DeMasDe(Minimo, Total + sumaDeDinero.Total);
 
         public bool Es(decimal valor) => Total == valor;
+
+        public Saldo Sustraer(SumaDeDinero sumaDeDinero) =>
+            DeMasDe(Minimo, Total - sumaDeDinero.Total);
     }
 }
