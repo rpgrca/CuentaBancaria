@@ -44,5 +44,12 @@ namespace oop
             Assert.Equal(saldoEsperado, sut.Saldo);
         }
 
+        [Fact]
+        public void LanzarExcepcion_CuandoSeExtraeMasDineroQueElSaldoExistente()
+        {
+            var sut = GetSubjectUnderTest();
+            var exception = Assert.Throws<ArgumentException>(() => sut.Extraer(1000));
+            Assert.Equal(CajaDeAhorro.NO_SE_PUEDE_EXTRAER_MAS_QUE_EL_SALDO, exception.Message);
+        }
     }
 }
