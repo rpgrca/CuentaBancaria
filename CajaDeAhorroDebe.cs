@@ -32,5 +32,17 @@ namespace oop
             sut.Depositar(1000);
             Assert.Equal(1450, sut.Saldo);
         }
+
+        [Theory]
+        [InlineData(1000, 250, 750)]
+        [InlineData(1000, 1000, 0)]
+        public void DescontarDineroDelSaldo_CuandoSeRealizaUnaExtraccion(decimal saldoInicial, decimal unaCantidadAExtraer, decimal saldoEsperado)
+        {
+            var sut = GetSubjectUnderTest();
+            sut.Depositar(saldoInicial);
+            sut.Extraer(unaCantidadAExtraer);
+            Assert.Equal(saldoEsperado, sut.Saldo);
+        }
+
     }
 }
