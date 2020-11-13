@@ -10,6 +10,8 @@ namespace oop
 
         public void Depositar(decimal unaCantidadDeDinero)
         {
+            if (unaCantidadDeDinero < 0) throw new ArgumentException(CajaDeAhorro.NO_SE_PUEDE_DEPOSITAR_UNA_DEUDA);
+
             Saldo += unaCantidadDeDinero;
         }
 
