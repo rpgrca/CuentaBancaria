@@ -59,5 +59,13 @@ namespace oop
             var exception = Assert.Throws<ArgumentException>(() => sut.Depositar(-1));
             Assert.Equal(CajaDeAhorro.NO_SE_PUEDE_DEPOSITAR_UNA_DEUDA, exception.Message);
         }
+
+        [Fact]
+        public void LanzarExcepcion_CuandoSeExtraeUnaCantidadNegativa()
+        {
+            var sut = GetSubjectUnderTest();
+            var exception = Assert.Throws<ArgumentException>(() => sut.Extraer(-1));
+            Assert.Equal(CajaDeAhorro.NO_SE_PUEDE_EXTRAER_UNA_DEUDA, exception.Message);
+        }
     }
 }
