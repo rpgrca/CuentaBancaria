@@ -25,5 +25,15 @@ namespace oop
             var exception = Assert.Throws<ArgumentException>(() => Saldo.DeMasDe(1000, 100));
             Assert.Equal(Saldo.TOTAL_NO_PUEDE_QUEDAR_POR_DEBAJO_DEL_MINIMO, exception.Message);
         }
+
+        [Fact]
+        public void Test1()
+        {
+            var sut = Saldo.DeMasDe(0);
+            var sumaDeDinero = SumaDeDinero.De(150);
+            var nuevoSaldo = sut.Agregar(sumaDeDinero);
+
+            Assert.True(nuevoSaldo.Es(150));
+        }
     }
 }

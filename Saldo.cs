@@ -20,5 +20,10 @@ namespace oop
             if (valorInicial < minimo) throw new ArgumentException(TOTAL_NO_PUEDE_QUEDAR_POR_DEBAJO_DEL_MINIMO);
             return new Saldo(minimo, valorInicial);
         }
+
+        public Saldo Agregar(SumaDeDinero sumaDeDinero) =>
+            DeMasDe(Minimo, Total + sumaDeDinero.Total);
+
+        public bool Es(decimal valor) => Total == valor;
     }
 }
