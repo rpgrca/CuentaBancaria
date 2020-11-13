@@ -4,6 +4,11 @@ namespace oop
 {
     public class CajaDeAhorro
     {
-        public decimal Saldo { get; protected set; } = 0;
+        public decimal Saldo { get; private set; } = 0;
+
+        public void Depositar(decimal unaCantidadDeDinero)
+        {
+            Saldo += unaCantidadDeDinero;
+        }
     }
 }
