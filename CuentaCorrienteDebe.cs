@@ -43,5 +43,13 @@ namespace oop
             sut.Extraer(unaCantidadAExtraer);
             Assert.Equal(saldoEsperado, sut.Saldo);
         }
+
+        [Fact]
+        public void LanzarExcepcion_CuandoSeExtraeMasDineroQueElLimiteExistente()
+        {
+            var sut = GetSubjectUnderTest();
+            var exception = Assert.Throws<ArgumentException>(() => sut.Extraer(1000));
+            Assert.Equal(CuentaCorriente.NO_SE_PUEDE_EXTRAER_MAS_ALLA_DEL_LIMITE, exception.Message);
+        }
     }
 }
