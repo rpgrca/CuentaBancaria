@@ -5,6 +5,7 @@ namespace oop
     public abstract class Cuenta
     {
         public const string NO_SE_PUEDE_DEPOSITAR_UNA_DEUDA = "No se puede depositar una cantidad negativa de dinero.";
+        public const string NO_SE_PUEDE_EXTRAER_UNA_DEUDA = "No se puede extraer una cantidad negativa de dinero.";
 
         public decimal Saldo { get; protected set; } = 0;
 
@@ -15,6 +16,14 @@ namespace oop
             Saldo += unaCantidadDeDinero;
         }
 
-        public abstract void Extraer(decimal unaCantidadDeDinero);
+        public void Extraer(decimal unaCantidadDeDinero)
+        {
+            if (unaCantidadDeDinero < 0) throw new ArgumentException(NO_SE_PUEDE_EXTRAER_UNA_DEUDA);
+            TieneSaldoParaExtraer(unaCantidadDeDinero);
+
+            Saldo -= unaCantidadDeDinero;
+        }
+
+        protected abstract void TieneSaldoParaExtraer(decimal unaCantidadDeDinero);
     }
 }
