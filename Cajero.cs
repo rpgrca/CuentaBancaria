@@ -3,7 +3,7 @@ namespace oop
     public class Cajero
     {
         public decimal ConsultarSaldoDe(Cuenta cuenta) =>
-            cuenta.Saldo;
+            cuenta.Saldo.Total;
 
         public void DepositarEn(Cuenta cuenta, SumaDeDinero unaSumaDeDinero) =>
             cuenta.Depositar(unaSumaDeDinero);

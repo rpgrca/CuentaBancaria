@@ -9,7 +9,7 @@ namespace oop
         public void TenerSaldoDeCeroPesos_CuandoSeCrea()
         {
             var sut = GetSubjectUnderTest();
-            Assert.Equal(0, sut.Saldo);
+            Assert.Equal(0, sut.Saldo.Total);
         }
 
         private static CajaDeAhorro GetSubjectUnderTest() => new CajaDeAhorro();
@@ -21,7 +21,7 @@ namespace oop
         {
             var sut = GetSubjectUnderTest();
             sut.Depositar(SumaDeDinero.De(unaSumaDePesos));
-            Assert.Equal(unaSumaDePesos, sut.Saldo);
+            Assert.Equal(unaSumaDePesos, sut.Saldo.Total);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace oop
             var sut = GetSubjectUnderTest();
             sut.Depositar(SumaDeDinero.De(450));
             sut.Depositar(SumaDeDinero.De(1000));
-            Assert.Equal(1450, sut.Saldo);
+            Assert.Equal(1450, sut.Saldo.Total);
         }
 
         [Theory]
@@ -41,7 +41,7 @@ namespace oop
             var sut = GetSubjectUnderTest();
             sut.Depositar(SumaDeDinero.De(saldoInicial));
             sut.Extraer(SumaDeDinero.De(unaCantidadAExtraer));
-            Assert.Equal(saldoEsperado, sut.Saldo);
+            Assert.Equal(saldoEsperado, sut.Saldo.Total);
         }
 
         [Fact]

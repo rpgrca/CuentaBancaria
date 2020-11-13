@@ -6,30 +6,23 @@ namespace oop
     public class SaldoDebe
     {
         [Fact]
-        public void InicializarseEnCero_CuandoNoSeAsignaUnValorInicialExplicito()
-        {
-            var sut = Saldo.DeMasDe(0);
-            Assert.Equal(0, sut.Total);
-        }
-
-        [Fact]
         public void InicializarseEnElValorDado_CuandoSeDaUnValorExplicito()
         {
-            var sut = Saldo.DeMasDe(0, 10);
+            var sut = Saldo.DeMasDe(0, 10, () => {});
             Assert.Equal(10, sut.Total);
         }
 
         [Fact]
         public void LanzarExcepcion_CuandoElValorInicialEsMenorAlSaldoMinimo()
         {
-            var exception = Assert.Throws<ArgumentException>(() => Saldo.DeMasDe(1000, 100));
-            Assert.Equal(Saldo.TOTAL_NO_PUEDE_QUEDAR_POR_DEBAJO_DEL_MINIMO, exception.Message);
+            var exception = Assert.Throws<ArgumentException>(() => Saldo.DeMasDe(1000, 100, () => throw new ArgumentException("Pasa por aca")));
+            Assert.Equal("Pasa por aca", exception.Message);
         }
 
         [Fact]
         public void AgregarSumaDeDinero()
         {
-            var sut = Saldo.DeMasDe(0);
+            var sut = Saldo.DeMasDe(0, 0, () => {});
             var sumaDeDinero = SumaDeDinero.De(150);
             var nuevoSaldo = sut.Agregar(sumaDeDinero);
 
@@ -39,7 +32,7 @@ namespace oop
         [Fact]
         public void SustraerSumaDeDinero()
         {
-            var sut = Saldo.DeMasDe(-1000);
+            var sut = Saldo.DeMasDe(-1000, 0, () => {});
             var sumaDeDinero = SumaDeDinero.De(600);
             var nuevoSaldo = sut.Sustraer(sumaDeDinero);
 

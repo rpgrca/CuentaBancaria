@@ -9,7 +9,7 @@ namespace oop
         public void TenerSaldoDeCeroPesos_CuandoSeCrea()
         {
             var sut = GetSubjectUnderTest();
-            Assert.Equal(0, sut.Saldo);
+            Assert.Equal(0, sut.Saldo.Total);
         }
 
         private static CuentaCorriente GetSubjectUnderTest() => new CuentaCorriente();
@@ -21,7 +21,7 @@ namespace oop
         {
             var sut = GetSubjectUnderTest();
             sut.Depositar(SumaDeDinero.De(unaCantidadDeDinero));
-            Assert.Equal(unaCantidadDeDinero, sut.Saldo);
+            Assert.Equal(unaCantidadDeDinero, sut.Saldo.Total);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace oop
             var sut = GetSubjectUnderTest();
             sut.Depositar(SumaDeDinero.De(1000));
             sut.Depositar(SumaDeDinero.De(450));
-            Assert.Equal(1450, sut.Saldo);
+            Assert.Equal(1450, sut.Saldo.Total);
         }
 
         [Theory]
@@ -41,14 +41,14 @@ namespace oop
             var sut = GetSubjectUnderTest();
             sut.Depositar(SumaDeDinero.De(saldoInicial));
             sut.Extraer(SumaDeDinero.De(unaCantidadAExtraer));
-            Assert.Equal(saldoEsperado, sut.Saldo);
+            Assert.Equal(saldoEsperado, sut.Saldo.Total);
         }
 
         [Fact]
         public void LanzarExcepcion_CuandoSeExtraeMasDineroQueElLimiteExistente()
         {
             var sut = GetSubjectUnderTest();
-            var exception = Assert.Throws<ArgumentException>(() => sut.Extraer(SumaDeDinero.De(1000)));
+            var exception = Assert.Throws<ArgumentException>(() => sut.Extraer(SumaDeDinero.De(10000)));
             Assert.Equal(CuentaCorriente.NO_SE_PUEDE_EXTRAER_MAS_ALLA_DEL_LIMITE, exception.Message);
         }
    }
