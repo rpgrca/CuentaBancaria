@@ -6,7 +6,7 @@ namespace oop
     {
         public const string TOTAL_NO_PUEDE_QUEDAR_POR_DEBAJO_DEL_MINIMO = "El total no puede quedar por debajo del mínimo.";
 
-        private readonly Action errorCallback;
+        private readonly Action _errorCallback;
         public decimal Total { get; }
         private decimal Minimo { get; }
 
@@ -14,7 +14,7 @@ namespace oop
         {
             Minimo = minimo;
             Total = valorInicial;
-            this.errorCallback = errorCallback;
+            _errorCallback = errorCallback;
         }
 
         public static Saldo DeMasDe(decimal minimo, decimal valorInicial, Action errorCallback)
@@ -24,11 +24,9 @@ namespace oop
         }
 
         public Saldo Agregar(SumaDeDinero sumaDeDinero) =>
-            DeMasDe(Minimo, Total + sumaDeDinero.Total, errorCallback);
-
-        public bool Es(decimal valor) => Total == valor;
+            DeMasDe(Minimo, Total + sumaDeDinero.Total, _errorCallback);
 
         public Saldo Sustraer(SumaDeDinero sumaDeDinero) =>
-            DeMasDe(Minimo, Total - sumaDeDinero.Total, errorCallback);
+            DeMasDe(Minimo, Total - sumaDeDinero.Total, _errorCallback);
     }
 }

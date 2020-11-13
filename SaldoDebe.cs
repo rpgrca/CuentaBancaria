@@ -26,7 +26,7 @@ namespace oop
             var sumaDeDinero = SumaDeDinero.De(150);
             var nuevoSaldo = sut.Agregar(sumaDeDinero);
 
-            Assert.True(nuevoSaldo.Es(150));
+            Assert.Equal(150, nuevoSaldo.Total);
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace oop
             var sumaDeDinero = SumaDeDinero.De(600);
             var nuevoSaldo = sut.Sustraer(sumaDeDinero);
 
-            Assert.True(nuevoSaldo.Es(-600));
+            Assert.Equal(-600, nuevoSaldo.Total);
         }
     }
 }
