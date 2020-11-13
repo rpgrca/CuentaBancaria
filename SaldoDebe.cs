@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace oop
@@ -5,39 +6,24 @@ namespace oop
     public class SaldoDebe
     {
         [Fact]
-        public void Test1()
+        public void InicializarseEnCero_CuandoNoSeAsignaUnValorInicialExplicito()
         {
             var sut = Saldo.DeMasDe(0);
             Assert.Equal(0, sut.Total);
         }
 
         [Fact]
-        public void Test2()
+        public void InicializarseEnElValorDado_CuandoSeDaUnValorExplicito()
         {
             var sut = Saldo.DeMasDe(0, 10);
             Assert.Equal(10, sut.Total);
         }
-    }
 
-    public class Saldo
-    {
-        public decimal Total { get; }
-        private decimal Minimo { get; }
-
-        private Saldo(decimal minimo, decimal valorInicial)
+        [Fact]
+        public void LanzarExcepcion_CuandoElValorInicialEsMenorAlSaldoMinimo()
         {
-            Minimo = minimo;
-            Total = valorInicial;
-        }
-
-        public static Saldo DeMasDe(decimal minimo)
-        {
-            return new Saldo(minimo, 0);
-        }
-
-        public static Saldo DeMasDe(decimal minimo, decimal valorInicial)
-        {
-            return new Saldo(minimo, valorInicial);
+            var exception = Assert.Throws<ArgumentException>(() => Saldo.DeMasDe(1000, 100));
+            Assert.Equal(Saldo.TOTAL_NO_PUEDE_QUEDAR_POR_DEBAJO_DEL_MINIMO, exception.Message);
         }
     }
 }
