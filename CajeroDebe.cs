@@ -14,5 +14,16 @@ namespace oop
 
             Assert.Equal(1000, sut.ConsultarSaldoDe(cajaDeAhorro));
         }
+
+        [Fact]
+        public void ExtraerDineroDeCajaDeAhorro()
+        {
+            var cajaDeAhorro = new CajaDeAhorro();
+            var sut = new Cajero();
+            sut.DepositarEn(cajaDeAhorro, 1000);
+            sut.ExtraderDe(cajaDeAhorro, 250);
+
+            Assert.Equal(750, sut.ConsultarSaldoDe(cajaDeAhorro));
+        }
     }
 }

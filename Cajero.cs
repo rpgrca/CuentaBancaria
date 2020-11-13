@@ -11,5 +11,10 @@ namespace oop
         {
             cajaDeAhorro.Depositar(unaSumaDeDinero);
         }
+
+        public void ExtraderDe(CajaDeAhorro cajaDeAhorro, decimal unaSumaDeDinero)
+        {
+            cajaDeAhorro.Extraer(unaSumaDeDinero);
+        }
     }
 }
