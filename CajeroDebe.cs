@@ -25,5 +25,15 @@ namespace oop
 
             Assert.Equal(750, sut.ConsultarSaldoDe(cajaDeAhorro));
         }
+
+        [Fact]
+        public void DepositarDineroEnCuentaCorriente()
+        {
+            var cuentaCorriente = new CuentaCorriente();
+            var sut = new Cajero();
+            sut.DepositarEn(cuentaCorriente, 1000);
+
+            Assert.Equal(1000, sut.ConsultarSaldoDe(cuentaCorriente));
+        }
     }
 }

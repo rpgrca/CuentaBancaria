@@ -2,19 +2,19 @@ namespace oop
 {
     public class Cajero
     {
-        public decimal ConsultarSaldoDe(CajaDeAhorro cajaDeAhorro)
+        public decimal ConsultarSaldoDe(Cuenta cuenta)
         {
-            return cajaDeAhorro.Saldo;
+            return cuenta.Saldo;
         }
 
-        public void DepositarEn(CajaDeAhorro cajaDeAhorro, decimal unaSumaDeDinero)
+        public void DepositarEn(Cuenta cuenta, decimal unaSumaDeDinero)
         {
-            cajaDeAhorro.Depositar(unaSumaDeDinero);
+            cuenta.Depositar(unaSumaDeDinero);
         }
 
-        public void ExtraderDe(CajaDeAhorro cajaDeAhorro, decimal unaSumaDeDinero)
+        public void ExtraderDe(Cuenta cuenta, decimal unaSumaDeDinero)
         {
-            cajaDeAhorro.Extraer(unaSumaDeDinero);
+            cuenta.Extraer(unaSumaDeDinero);
         }
     }
 }
