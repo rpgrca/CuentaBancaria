@@ -20,7 +20,7 @@ namespace oop
         public void AcumularDineroEnSaldo_CuandoSeDepositaUnaSumaDePesos(int unaCantidadDeDinero)
         {
             var sut = GetSubjectUnderTest();
-            sut.Depositar(unaCantidadDeDinero);
+            sut.Depositar(SumaDeDinero.De(unaCantidadDeDinero));
             Assert.Equal(unaCantidadDeDinero, sut.Saldo);
         }
 
@@ -28,8 +28,8 @@ namespace oop
         public void AcumularDineroEnSaldo_CuandoSeRealizanMultiplesDepositos()
         {
             var sut = GetSubjectUnderTest();
-            sut.Depositar(1000);
-            sut.Depositar(450);
+            sut.Depositar(SumaDeDinero.De(1000));
+            sut.Depositar(SumaDeDinero.De(450));
             Assert.Equal(1450, sut.Saldo);
         }
 
@@ -39,8 +39,8 @@ namespace oop
         public void DescontarDineroDelSaldo_CuandoSeRealizaUnaExtraccion(decimal saldoInicial, decimal unaCantidadAExtraer, decimal saldoEsperado)
         {
             var sut = GetSubjectUnderTest();
-            sut.Depositar(saldoInicial);
-            sut.Extraer(unaCantidadAExtraer);
+            sut.Depositar(SumaDeDinero.De(saldoInicial));
+            sut.Extraer(SumaDeDinero.De(unaCantidadAExtraer));
             Assert.Equal(saldoEsperado, sut.Saldo);
         }
 
@@ -48,24 +48,8 @@ namespace oop
         public void LanzarExcepcion_CuandoSeExtraeMasDineroQueElLimiteExistente()
         {
             var sut = GetSubjectUnderTest();
-            var exception = Assert.Throws<ArgumentException>(() => sut.Extraer(1000));
+            var exception = Assert.Throws<ArgumentException>(() => sut.Extraer(SumaDeDinero.De(1000)));
             Assert.Equal(CuentaCorriente.NO_SE_PUEDE_EXTRAER_MAS_ALLA_DEL_LIMITE, exception.Message);
         }
-
-        [Fact]
-        public void LanzarException_CuandoSeDepositaUnaCantidadNegativa()
-        {
-            var sut = GetSubjectUnderTest();
-            var exception = Assert.Throws<ArgumentException>(() => sut.Depositar(-1000));
-            Assert.Equal(CajaDeAhorro.NO_SE_PUEDE_DEPOSITAR_UNA_DEUDA, exception.Message);
-        }
-
-        [Fact]
-        public void LanzarExcepcion_CuandoSeExtraeUnaCantidadNegativa()
-        {
-            var sut = GetSubjectUnderTest();
-            var exception = Assert.Throws<ArgumentException>(() => sut.Extraer(-1));
-            Assert.Equal(CajaDeAhorro.NO_SE_PUEDE_EXTRAER_UNA_DEUDA, exception.Message);
-        }
-    }
+   }
 }

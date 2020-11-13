@@ -6,9 +6,9 @@ namespace oop
     {
         public const string NO_SE_PUEDE_EXTRAER_MAS_ALLA_DEL_LIMITE = "No se puede extraer más allá del límite negativo.";
 
-        protected override void TieneSaldoParaExtraer(decimal unaCantidadDeDinero)
+        protected override void TieneSaldoParaExtraer(SumaDeDinero unaCantidadDeDinero)
         {
-            if (Saldo - unaCantidadDeDinero <= -1000) throw new ArgumentException(NO_SE_PUEDE_EXTRAER_MAS_ALLA_DEL_LIMITE);
+            if (Saldo - unaCantidadDeDinero.Total <= -1000) throw new ArgumentException(NO_SE_PUEDE_EXTRAER_MAS_ALLA_DEL_LIMITE);
         }
     }
 }

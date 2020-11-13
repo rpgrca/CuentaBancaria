@@ -6,9 +6,9 @@ namespace oop
     {
         public const string NO_SE_PUEDE_EXTRAER_MAS_QUE_EL_SALDO = "No se puede extraer más dinero que el saldo existente.";
 
-        protected override void TieneSaldoParaExtraer(decimal unaCantidadDeDinero)
+        protected override void TieneSaldoParaExtraer(SumaDeDinero unaCantidadDeDinero)
         {
-            if (Saldo < unaCantidadDeDinero) throw new ArgumentException(NO_SE_PUEDE_EXTRAER_MAS_QUE_EL_SALDO);
+            if (Saldo < unaCantidadDeDinero.Total) throw new ArgumentException(NO_SE_PUEDE_EXTRAER_MAS_QUE_EL_SALDO);
         }
     }
 }

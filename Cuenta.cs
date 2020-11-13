@@ -9,21 +9,18 @@ namespace oop
 
         public decimal Saldo { get; protected set; } = 0;
 
-        public void Depositar(decimal unaCantidadDeDinero)
+        public void Depositar(SumaDeDinero unaCantidadDeDinero)
         {
-            if (unaCantidadDeDinero < 0) throw new ArgumentException(NO_SE_PUEDE_DEPOSITAR_UNA_DEUDA);
-
-            Saldo += unaCantidadDeDinero;
+            Saldo += unaCantidadDeDinero.Total;
         }
 
-        public void Extraer(decimal unaCantidadDeDinero)
+        public void Extraer(SumaDeDinero unaCantidadDeDinero)
         {
-            if (unaCantidadDeDinero < 0) throw new ArgumentException(NO_SE_PUEDE_EXTRAER_UNA_DEUDA);
             TieneSaldoParaExtraer(unaCantidadDeDinero);
 
-            Saldo -= unaCantidadDeDinero;
+            Saldo -= unaCantidadDeDinero.Total;
         }
 
-        protected abstract void TieneSaldoParaExtraer(decimal unaCantidadDeDinero);
+        protected abstract void TieneSaldoParaExtraer(SumaDeDinero unaCantidadDeDinero);
     }
 }
