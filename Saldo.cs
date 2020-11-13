@@ -12,16 +12,15 @@ namespace oop
 
         private Saldo(decimal minimo, decimal valorInicial, Action errorCallback)
         {
+            if (valorInicial < minimo) errorCallback?.Invoke();
+
             Minimo = minimo;
             Total = valorInicial;
             _errorCallback = errorCallback;
         }
 
-        public static Saldo DeMasDe(decimal minimo, decimal valorInicial, Action errorCallback)
-        {
-            if (valorInicial < minimo) errorCallback?.Invoke();
-            return new Saldo(minimo, valorInicial, errorCallback);
-        }
+        public static Saldo DeMasDe(decimal minimo, decimal valorInicial, Action errorCallback) =>
+            new Saldo(minimo, valorInicial, errorCallback);
 
         public Saldo Agregar(SumaDeDinero sumaDeDinero) =>
             DeMasDe(Minimo, Total + sumaDeDinero.Total, _errorCallback);
