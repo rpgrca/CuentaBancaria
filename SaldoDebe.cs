@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace oop
@@ -10,6 +9,13 @@ namespace oop
         {
             var sut = Saldo.DeMasDe(0);
             Assert.Equal(0, sut.Total);
+        }
+
+        [Fact]
+        public void Test2()
+        {
+            var sut = Saldo.DeMasDe(0, 10);
+            Assert.Equal(10, sut.Total);
         }
     }
 
@@ -27,6 +33,11 @@ namespace oop
         public static Saldo DeMasDe(decimal minimo)
         {
             return new Saldo(minimo, 0);
+        }
+
+        public static Saldo DeMasDe(decimal minimo, decimal valorInicial)
+        {
+            return new Saldo(minimo, valorInicial);
         }
     }
 }
