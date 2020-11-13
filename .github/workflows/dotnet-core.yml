@@ -24,6 +24,6 @@ jobs:
     - name: Build debug
       run: dotnet build --configuration Debug --no-restore
     - name: Testing
-      run: coverlet bin/Debug/netcoreapp3.0/oop.dll --target "dotnet" --targetargs "test oop.csproj --no-build --verbosity quiet" --format OpenCover --output cuentabancaria.coverage.xml
+      run: coverlet bin/Debug/netcoreapp3.0/CuentaBancaria.UnitTests.dll --target "dotnet" --targetargs "test CuentaBancaria.UnitTests.csproj --no-build --verbosity quiet" --format OpenCover --output cuentabancaria.coverage.xml
     - name: Upload
       run: bash <(curl -s https://codecov.io/bash)
