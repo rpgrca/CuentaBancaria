@@ -23,5 +23,14 @@ namespace oop
             sut.Depositar(unaCantidadDeDinero);
             Assert.Equal(unaCantidadDeDinero, sut.Saldo);
         }
+
+        [Fact]
+        public void AcumularDineroEnSaldo_CuandoSeRealizanMultiplesDepositos()
+        {
+            var sut = GetSubjectUnderTest();
+            sut.Depositar(1000);
+            sut.Depositar(450);
+            Assert.Equal(1450, sut.Saldo);
+        }
     }
 }
