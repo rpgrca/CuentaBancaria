@@ -1,4 +1,4 @@
-namespace oop
+namespace CuentaBancaria
 {
     public class Cajero
     {

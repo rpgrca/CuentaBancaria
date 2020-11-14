@@ -1,6 +1,6 @@
 using System;
 
-namespace oop
+namespace CuentaBancaria
 {
     public class SumaDeDinero
     {
