@@ -1,4 +1,4 @@
-![.NET Core](https://github.com/rpgrca/CuentaBancaria/workflows/.NET%20Core/badge.svg)
+![.NET Core](https://github.com/rpgrca/CuentaBancaria/workflows/.NET%20Core/badge.svg) [![codecov](https://codecov.io/gh/rpgrca/CuentaBancaria/branch/master/graph/badge.svg)](https://codecov.io/gh/rpgrca/CuentaBancaria)
 
 # Ejercicio de TDD y refactoreo, con minimización de ifs
 
