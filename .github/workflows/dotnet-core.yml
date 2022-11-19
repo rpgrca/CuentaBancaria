@@ -13,17 +13,28 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET Core
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.301
+        dotnet-version: 7.0.x
+
     - name: Install dependencies
       run: dotnet restore
+
     - name: Install tools
       run: dotnet tool install --global coverlet.console
+
     - name: Build debug
       run: dotnet build --configuration Debug --no-restore
+
     - name: Testing
-      run: coverlet CuentaBancaria.UnitTests/bin/Debug/netcoreapp3.0/CuentaBancaria.UnitTests.dll --target "dotnet" --targetargs "test CuentaBancaria.UnitTests/CuentaBancaria.UnitTests.csproj --no-build --verbosity quiet" --format OpenCover --output cuentabancaria.coverage.xml
+      run: coverlet CuentaBancaria.UnitTests/bin/Debug/net7/CuentaBancaria.UnitTests.dll --target "dotnet" --targetargs "test CuentaBancaria.UnitTests/CuentaBancaria.UnitTests.csproj --no-build --verbosity quiet" --format OpenCover --output cuentabancaria.coverage.xml
+
     - name: Upload
       run: bash <(curl -s https://codecov.io/bash)
+
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v2
+      with:
+        name: code-coverage-report
+        path: ./*.coverage.xml
