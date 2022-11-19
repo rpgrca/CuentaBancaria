@@ -1,4 +1,5 @@
-![.NET Core](https://github.com/rpgrca/CuentaBancaria/workflows/.NET%20Core/badge.svg) [![codecov](https://codecov.io/gh/rpgrca/CuentaBancaria/branch/master/graph/badge.svg)](https://codecov.io/gh/rpgrca/CuentaBancaria)
+[![buildall][buildall-img]][buildall-url]
+[![codecov][codecov-img]][codecov-url]
 
 # Ejercicio de TDD y refactoreo, con minimización de ifs
 
@@ -15,3 +16,8 @@ CAJERO
 
 1. A traves del cajero se puede depositar dinero
 1. A traves del cajero se puede extraer dinero
+
+[buildall-img]: https://github.com/rpgrca/CuentaBancaria/workflows/.NET%20Core/badge.svg
+[buildall-url]: https://github.com/rpgrca/Katas/actions/workflows/.NET%20Core.yml
+[codecov-img]: https://codecov.io/gh/rpgrca/CuentaBancaria/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/rpgrca/CuentaBancaria
